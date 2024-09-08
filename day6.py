@@ -6,14 +6,20 @@ anagrams together. You can return the answer in any order.
 """
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anagaram_map = {}
+        anagram_map = {}
         
         for s in strs:
-            sorted_str = ''.join(sorted(s))
+            # Create a character frequency tuple
+            count = [0] * 26
+            for char in s:
+                count[ord(char) - ord('a')] += 1
             
-            if sorted_str not in anagaram_map:
-                anagaram_map[sorted_str] = []
-                
-            anagaram_map[sorted_str].append(s)
+            # Convert the list to a tuple to use as a key
+            key = tuple(count)
+            
+            if key not in anagram_map:
+                anagram_map[key] = []
+            
+            anagram_map[key].append(s)
         
-        return list(anagaram_map.values())
+        return list(anagram_map.values())
