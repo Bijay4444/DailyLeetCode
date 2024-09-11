@@ -8,19 +8,15 @@ If there is no common prefix, return an empty string "".
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        if strs == '':
-            return ''
+        if not strs:
+            return ""
         
-        prefix = strs[0]
+        # zip(*strs) zips the strings together, producing tuples of corresponding characters
+        for i, char_tuple in enumerate(zip(*strs)):
+            # if all characters in char_tuple are not the same, return the prefix up to i
+            if len(set(char_tuple)) > 1:
+                return strs[0][:i]
         
-        for string in strs[1:]:
-            
-            while not string.startswith(prefix):
-                prefix = prefix[:-1]
-                
-                if not prefix:
-                    return ""
-                
-        return prefix
-    
+        # If no mismatch found, return the entire first string (minimum length among all)
+        return min(strs, key=len)
                 
