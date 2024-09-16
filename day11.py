@@ -12,4 +12,17 @@ Consider the number of unique elements of nums to be k, to get accepted, you nee
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
         
+        # Pointer for the position of the last unique element
+        unique_index = 0
+        
+        # Traverse the array starting from the second element
+        for i in range(1, len(nums)):
+            if nums[i] != nums[unique_index]:
+                unique_index += 1
+                nums[unique_index] = nums[i]
+        
+        # The length of the unique portion is unique_index + 1
+        return unique_index + 1
