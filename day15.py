@@ -6,14 +6,13 @@ A word is a maximal
 substring
 consisting of non-space characters only.
 """
-s = "Hello World"
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        string = s.split()
+        count = 0
+        last_word = string[-1]
 
-string = s.split()
-last_word = string[-1]
+        for i in last_word:
+            count += 1
 
-count = 0
-for i in last_word:
-    print(i)
-    count += 1
-    
-print(count)
+        return count
