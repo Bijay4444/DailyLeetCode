@@ -8,11 +8,4 @@ consisting of non-space characters only.
 """
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        string = s.split()
-        count = 0
-        last_word = string[-1]
-
-        for i in last_word:
-            count += 1
-
-        return count
+        return len(s.rstrip().split()[-1])
